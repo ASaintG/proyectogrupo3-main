@@ -45,9 +45,9 @@ import hn.uth.proyectofinal.ui.DateConverter;
                                    LugarDAO testDao = INSTANCE.lugarDao();
                                     testDao.deleteAll();
 
-                                testDao.insert(new Lugar("San Pedro Sula","Valle",new Date(),23.23,23.23,"Test San pedro",true));
-                                testDao.insert(new Lugar("Villanueva","Valle",new Date(),25.23,26.23,"Test Villanueva",true));
-                                testDao.insert(new Lugar("Lago de Yojoa","Valle",new Date(),25.23,26.23,"Test Lago",false));
+                                testDao.insert(new Lugar("San Pedro Sula","Valle",new Date(),23.23,23.23,"Test San pedro",3));
+                                testDao.insert(new Lugar("Villanueva","Valle",new Date(),25.23,26.23,"Test Villanueva",3));
+                                testDao.insert(new Lugar("Lago de Yojoa","Valle",new Date(),25.23,26.23,"Test Lago",3));
 
                                     ContactoDAO contactoDao = INSTANCE.contactoDAO();
                                     contactoDao.deleteAll();

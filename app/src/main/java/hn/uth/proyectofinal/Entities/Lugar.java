@@ -39,10 +39,10 @@ public class Lugar implements Serializable {
     private String descripcion;
     @NonNull
     @ColumnInfo(name = "retorno")
-    private Boolean retorno;
+    private int retorno;
 
 
-    public Lugar(@NonNull String lugar, @NonNull String tipoLugar, @NonNull Date fecha, @NonNull Double longitud, @NonNull Double latitud, @NonNull String descripcion, @NonNull Boolean retorno) {
+    public Lugar(@NonNull String lugar, @NonNull String tipoLugar, @NonNull Date fecha, @NonNull Double longitud, @NonNull Double latitud, @NonNull String descripcion,  int retorno) {
         this.lugar = lugar;
         this.tipoLugar = tipoLugar;
         this.fecha = fecha;
@@ -119,12 +119,12 @@ public class Lugar implements Serializable {
         this.descripcion = descripcion;
     }
 
-    @NonNull
-    public Boolean getRetorno() {
+
+    public int getRetorno() {
         return retorno;
     }
 
-    public void setRetorno(@NonNull Boolean retorno) {
+    public void setRetorno(int retorno) {
         this.retorno = retorno;
     }
 }

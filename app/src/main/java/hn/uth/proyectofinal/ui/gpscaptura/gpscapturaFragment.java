@@ -1,5 +1,6 @@
 package hn.uth.proyectofinal.ui.gpscaptura;
 
+import static android.app.Activity.RESULT_CANCELED;
 import static android.app.appsearch.AppSearchResult.RESULT_OK;
 
 import android.Manifest;
@@ -14,6 +15,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.RatingBar;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
@@ -30,6 +33,7 @@ import java.util.Date;
 import hn.uth.proyectofinal.Entities.Lugar;
 import hn.uth.proyectofinal.R;
 import hn.uth.proyectofinal.databinding.FragmentGpscapturaBinding;
+import hn.uth.proyectofinal.ui.home.HomeFragment;
 
 
 public class gpscapturaFragment extends Fragment implements LocationListener {
@@ -50,6 +54,9 @@ public class gpscapturaFragment extends Fragment implements LocationListener {
         binding = FragmentGpscapturaBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
         binding.cvData.setVisibility(View.INVISIBLE);
+        binding.ratingBar.setVisibility((View.VISIBLE));
+
+
 
         try{
             lugarEditar = (Lugar) getArguments().getSerializable("lugar");
@@ -71,16 +78,22 @@ public class gpscapturaFragment extends Fragment implements LocationListener {
             double longitud = Double.parseDouble(longitudStr);
             double latitud = Double.parseDouble(latitudStr);
             String descripcion = binding.tildescripcion.getEditText().getText().toString();
-            boolean retorno=true;
-            
-          Lugar nuevo = new Lugar(nombre,tipodelugar,currentDate,longitud,latitud,descripcion,retorno);
-            String mensaje = "Cliente agregado correctamente";
+            // Obtener la calificación del RatingBar
+            RatingBar ratingBar = binding.ratingBar;
+            float ratingValueFloat = ratingBar.getRating();
+            int calificacion = (int) ratingValueFloat;
+
+
+
+
+            Lugar nuevo = new Lugar(nombre,tipodelugar,currentDate,longitud,latitud,descripcion,calificacion);
+            String mensaje = "Lugar agregado correctamente";
             if(lugarEditar == null){
                 gpsCapturaViewModel.insert(nuevo);
             }else{
                 nuevo.setIdlugar(lugarEditar.getIdlugar());
               gpsCapturaViewModel.update(nuevo);
-                mensaje = "Cliente modificado correctamente";
+                mensaje = "Lugar modificado correctamente";
             }
 
             Snackbar.make(binding.getRoot(), mensaje, Snackbar.LENGTH_LONG).show();
@@ -91,7 +104,7 @@ public class gpscapturaFragment extends Fragment implements LocationListener {
 
         binding.btnEliminar.setOnClickListener(v -> {
             gpsCapturaViewModel.delete(lugarEditar);
-            Snackbar.make(binding.getRoot(), "Cliente eliminado correctamente", Snackbar.LENGTH_LONG).show();
+            Snackbar.make(binding.getRoot(), "Lugar eliminado correctamente", Snackbar.LENGTH_LONG).show();
             NavController navController = Navigation.findNavController(this.getActivity(), R.id.nav_host_fragment_activity_main);
             navController.navigate(R.id.navigation_home);
         } );
@@ -104,6 +117,7 @@ public class gpscapturaFragment extends Fragment implements LocationListener {
         binding.lvtipo.setText("");
         binding.tvLon.setText("");
         binding.tvLat.setText("");
+
         binding.tildescripcion.getEditText().setText("");
     }
 
@@ -113,6 +127,7 @@ public class gpscapturaFragment extends Fragment implements LocationListener {
             //ES UNA CREACIÓN, MOSTRAR BUSQUEDA
 
             binding.btnGuardar.setText(R.string.btn_crear_lugar);
+            binding.btnEliminar.setVisibility(View.INVISIBLE);
         }else{
             //ES UNA EDICIO, OCULTAR BUSQUED
             binding.cvData.setVisibility(View.VISIBLE);
@@ -120,9 +135,11 @@ public class gpscapturaFragment extends Fragment implements LocationListener {
             binding.lvtipo.setText(lugarEditar.getTipoLugar());
             binding.tvLon.setText(lugarEditar.getLongitudeStr());
             binding.tvLat.setText(lugarEditar.getLatitudeStr());
+            binding.ratingBar.setRating(lugarEditar.getRetorno());
             binding.tildescripcion.getEditText().setText(lugarEditar.getDescripcion());
             binding.btnGuardar.setText(R.string.btn_modificar_lugar);
             binding.btnEliminar.setVisibility(View.VISIBLE);
+
         }
     }
     private void solicitarPermisosGPS(Context contexto) {
@@ -167,7 +184,8 @@ public class gpscapturaFragment extends Fragment implements LocationListener {
     @Override
     public void onLocationChanged(@NonNull Location location) {
         Date currentDate = new Date();
-        ubicacion = new Lugar("","",currentDate,location.getLatitude(), location.getLongitude(),"",true);
+        int calificacion = 0;
+        ubicacion = new Lugar("","",currentDate,location.getLatitude(), location.getLongitude(),"",calificacion);
 
         binding.tvLat.setText(ubicacion.getLatitudeStr());
         binding.tvLon.setText(ubicacion.getLongitudeStr());
@@ -184,13 +202,6 @@ public class gpscapturaFragment extends Fragment implements LocationListener {
     //DETENER ACTUALIZACION DE UBICACION PARA DEJARLO DE UN SOLO USO (SI SE QUIERE SEGUIMIENTO NO HACER ESTA PARTE)
 
 
-
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        binding = null;
-    }
 
 
 }

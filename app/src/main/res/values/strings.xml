@@ -3,9 +3,14 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
-    <string name="title_capturagps">ubicacion\n</string>
-    <string name="title_ubicacion">ubicacion\n</string>
+    <string name="title_capturagps">Ubicacion\n</string>
+    <string name="title_ubicacion">Ubicacion\n</string>
     <string name="lbl_nombre">nombre</string>
     <string name="btn_crear_lugar">guardarlugar</string>
     <string name="btn_modificar_lugar">modificar lugar</string>
+    <string name="title_contactos">contactos de emergencia</string>
+    <string name="title_agregarcontacto">agregar contactos</string>
+    <string name="title_ContactosEmergencia">Contactos Emergencia</string>
+    <string name="title_lugares">Lugares</string>
+    <string name="title_addContactos">Add Contactos</string>
 </resources>
