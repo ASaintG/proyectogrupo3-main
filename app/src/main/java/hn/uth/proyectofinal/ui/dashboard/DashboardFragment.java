@@ -1,5 +1,6 @@
 package hn.uth.proyectofinal.ui.dashboard;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +21,7 @@ import hn.uth.proyectofinal.Entities.Contacto;
 import hn.uth.proyectofinal.Entities.Lugar;
 import hn.uth.proyectofinal.OnItemClickListener;
 import hn.uth.proyectofinal.databinding.FragmentDashboardBinding;
+import hn.uth.proyectofinal.databinding.PopUpCompartirlugarBinding;
 import hn.uth.proyectofinal.ui.home.LugarAdapter;
 
 public class DashboardFragment extends Fragment implements OnItemClickListener<Contacto> {
@@ -63,13 +65,15 @@ public class DashboardFragment extends Fragment implements OnItemClickListener<C
         binding = null;
     }
 
+
+
+
+
     @Override
-    public void onItemClickt(Contacto data) {
+    public void onItemClickt(Contacto data, int acccion) {
 
     }
 
-    @Override
-    public void onItemClick(Lugar data) {
 
-    }
+    ///
 }

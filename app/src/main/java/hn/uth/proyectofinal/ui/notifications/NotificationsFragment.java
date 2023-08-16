@@ -2,13 +2,16 @@ package hn.uth.proyectofinal.ui.notifications;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.telephony.SmsManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +29,8 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.google.android.material.snackbar.Snackbar;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,6 +41,7 @@ import hn.uth.proyectofinal.Entities.Contacto;
 import hn.uth.proyectofinal.Entities.Lugar;
 import hn.uth.proyectofinal.OnItemClickListener;
 import hn.uth.proyectofinal.databinding.FragmentNotificationsBinding;
+import hn.uth.proyectofinal.databinding.PopUpCompartirlugarBinding;
 import hn.uth.proyectofinal.ui.dashboard.DashboardViewModel;
 
 public class NotificationsFragment extends Fragment implements OnItemClickListener<Contact> {
@@ -171,7 +177,7 @@ public class NotificationsFragment extends Fragment implements OnItemClickListen
 
     ///aqui llamamos al activyt conytactps al dar clic a un contactp de nuestro telefono, para luegoi agregarlo en el ROOM
     @Override
-    public void onItemClickt(Contact data) {
+    public void onItemClickt(Contact data, int accion) {
         Intent intent = new Intent(requireContext(), ContactosActivity.class);
         intent.putExtra("action","update");
         intent.putExtra("contact",data);
@@ -179,16 +185,14 @@ public class NotificationsFragment extends Fragment implements OnItemClickListen
 
     }
 
-    @Override
-    public void onItemClick(Lugar data) {
 
-    }
 
     private void setupRecyclerView() {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this.getContext());
         binding.rvContacts.setLayoutManager(linearLayoutManager);
         binding.rvContacts.setAdapter(adaptador);
     }
+
 
 
 }

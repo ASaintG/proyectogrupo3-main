@@ -45,7 +45,7 @@ import hn.uth.proyectofinal.ui.DateConverter;
                                    LugarDAO testDao = INSTANCE.lugarDao();
                                     testDao.deleteAll();
 
-                                testDao.insert(new Lugar("San Pedro Sula","Valle",new Date(),23.23,23.23,"Test San pedro",3));
+                               /** testDao.insert(new Lugar("San Pedro Sula","Valle",new Date(),23.23,23.23,"Test San pedro",3));
                                 testDao.insert(new Lugar("Villanueva","Valle",new Date(),25.23,26.23,"Test Villanueva",3));
                                 testDao.insert(new Lugar("Lago de Yojoa","Valle",new Date(),25.23,26.23,"Test Lago",3));
 
@@ -54,7 +54,7 @@ import hn.uth.proyectofinal.ui.DateConverter;
                                     contactoDao.insert(new Contacto("Moises Torres","722435631","moises.torres@gmail.com","San Pedro Sula"));
                                     contactoDao.insert(new Contacto("Alejandra Ayala","722435631","ale.torres@gmail.com","San Pedro Sula"));
                                     contactoDao.insert(new Contacto("Moises Torres","722435631","moises.torres@gmail.com","San Pedro Sula"));
-                                    contactoDao.insert(new Contacto("Moises Torres","722435631","moises.torres@gmail.com","San Pedro Sula"));
+                                    contactoDao.insert(new Contacto("Moises Torres","722435631","moises.torres@gmail.com","San Pedro Sula"));*/
 
 
 

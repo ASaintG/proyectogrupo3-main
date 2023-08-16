@@ -52,6 +52,18 @@
                 app:layout_constraintTop_toBottomOf="@+id/txtNombreLugar" />
 
             <ImageView
+                android:id="@+id/shareLugar"
+                android:layout_width="25dp"
+                android:layout_height="30dp"
+                app:layout_constraintBottom_toTopOf="@+id/verLugar"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/txtNombreLugar"
+                app:layout_constraintVertical_bias="1.0"
+                app:srcCompat="@android:drawable/ic_menu_share" />
+
+            <ImageView
                 android:id="@+id/verLugar"
                 android:layout_width="27dp"
                 android:layout_height="24dp"
@@ -62,17 +74,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/txtFechaLugar"
                 app:srcCompat="@drawable/baseline_remove_red_eye_24" />
-
-            <ImageView
-                android:id="@+id/ShareLugar"
-                android:layout_width="27dp"
-                android:layout_height="23dp"
-                android:layout_marginStart="2dp"
-                android:layout_marginEnd="2dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/txtNombreLugar"
-                app:srcCompat="@android:drawable/ic_menu_share"
-                tools:layout_editor_absoluteY="20dp" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>

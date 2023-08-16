@@ -66,7 +66,8 @@ public class LugarAdapter extends RecyclerView.Adapter<LugarAdapter.ViewHolder> 
 
 
       public void  setOnClickListener(Lugar nombreLugar, OnItemClickListener<Lugar> clickListener){
-            this.binding.verLugar.setOnClickListener(v -> clickListener.onItemClickt(nombreLugar));
+            this.binding.verLugar.setOnClickListener(v -> clickListener.onItemClickt(nombreLugar,0));
+            this.binding.shareLugar.setOnClickListener(v -> clickListener.onItemClickt(nombreLugar,1));
 
       }
 

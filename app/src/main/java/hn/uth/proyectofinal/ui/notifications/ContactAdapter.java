@@ -4,6 +4,7 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.lifecycle.ViewModel;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -19,9 +20,11 @@ public class ContactAdapter extends  RecyclerView.Adapter<ContactAdapter.ViewHol
     List<Contact> dataset;
     OnItemClickListener<Contact> onItemClickContact;
 
+
     public ContactAdapter(List<Contact>dataset, OnItemClickListener<Contact> onItemClickContact ) {
         this.dataset=dataset;
         this.onItemClickContact=onItemClickContact;
+
 
     }
 
@@ -64,7 +67,7 @@ public class ContactAdapter extends  RecyclerView.Adapter<ContactAdapter.ViewHol
         }
 
         public void  setOnClickListener(Contact nombreContact, OnItemClickListener<Contact> clickListener){
-            this.binding.cardContact.setOnClickListener(v -> clickListener.onItemClickt(nombreContact));
+            this.binding.cardContact.setOnClickListener(v -> clickListener.onItemClickt(nombreContact,0));
 
         }
     }

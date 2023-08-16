@@ -8,9 +8,10 @@
     <string name="lbl_nombre">nombre</string>
     <string name="btn_crear_lugar">guardarlugar</string>
     <string name="btn_modificar_lugar">modificar lugar</string>
-    <string name="title_contactos">contactos de emergencia</string>
+    <string name="title_contactos">Contactos</string>
     <string name="title_agregarcontacto">agregar contactos</string>
-    <string name="title_ContactosEmergencia">Contactos Emergencia</string>
+    <string name="title_ContactosEmergencia">Contactos</string>
     <string name="title_lugares">Lugares</string>
     <string name="title_addContactos">Add Contactos</string>
+    <string name="indicar_recomendacion">recomendacion</string>
 </resources>

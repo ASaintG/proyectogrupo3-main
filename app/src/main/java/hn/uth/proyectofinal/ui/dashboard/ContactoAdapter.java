@@ -20,7 +20,7 @@ public class ContactoAdapter extends  RecyclerView.Adapter<ContactoAdapter.ViewH
     List<Contacto> dataset;
     OnItemClickListener<Contacto> onItemClickContacto;
 
-    public ContactoAdapter(List<Contacto>dataset, OnItemClickListener<Contacto> onItemClickLugar ) {
+    public ContactoAdapter(List<Contacto>dataset, OnItemClickListener<Contacto> onItemClickContacto ) {
         this.dataset=dataset;
         this.onItemClickContacto=onItemClickContacto;
 
@@ -42,7 +42,7 @@ public class ContactoAdapter extends  RecyclerView.Adapter<ContactoAdapter.ViewH
         holder.binding.txtCTelefono.setText(contacto.getTelefono());
         //holder.binding.txtCDireccion.setText(contacto.getEmail());
         holder.binding.txtCEmail.setText(contacto.getDireccion());
-        holder.setOnClickListener(contacto,onItemClickContacto);
+        holder.setOnClickListener(contacto,this.onItemClickContacto);
 
     }
 
@@ -64,8 +64,9 @@ public class ContactoAdapter extends  RecyclerView.Adapter<ContactoAdapter.ViewH
             this.binding = binding;
         }
 
+        //aqui mandamos la accion a un boton, cardview etc.
         public void  setOnClickListener(Contacto nombreContacto, OnItemClickListener<Contacto> clickListener){
-            this.binding.cardContacto.setOnClickListener(v -> clickListener.onItemClickt(nombreContacto));
+            this.binding.cardContacto.setOnClickListener(v -> clickListener.onItemClickt(nombreContacto,0));
 
         }
     }
